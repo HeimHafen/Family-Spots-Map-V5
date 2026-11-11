@@ -3,7 +3,7 @@
 **Freigabe:** 11. November 2026. Die tatsächliche Live-Abnahme auf iPhone/Safari steht noch aus.
 
 - Fünf Ziele, genau diese Reihenfolge: `Karte · Filter · Spots · Mein Tag · Spots Plus`.
-- Karte: orange Umrisskarte **mit orangener Beschriftung**, keine gefüllte aktive Kachel.
+- Karte: orange Umrisskarte, **Beschriftung wie alle anderen in FSM-Braun `#3D2918`**, keine gefüllte aktive Kachel.
 - Filter: grüne Regler. Spots: orange Standortmarkierung. Mein Tag: gefülltes grünes Herz. Spots Plus: orange Krone **ganz rechts**.
 - Ein gemeinsames cremefarbenes Navigationsband; keine einzelnen Auswahlkästen und keine Einzelschaltflächen-Schatten. Tastaturfokus nur bei `:focus-visible`.
 - Dieselben Symbole, Labels, Farben und Reihenfolge auf Start, Filter/Spots-Dialog, Vollbildkarte, Kalender und Tourenwelt.

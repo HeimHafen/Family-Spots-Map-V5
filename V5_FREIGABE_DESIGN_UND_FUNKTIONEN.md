@@ -8,7 +8,7 @@ Die Karte bleibt visuelles Zentrum und Startpunkt. Ziel ist eine hochwertige, ru
 
 - Heller Premium-Auftritt, Creme/Sand, Dunkelbraun/Taupe, Salbei/Oliv und warmes Orange; **kein Dark Mode**.
 - Tilla und gemeinsamer Landschafts-Header; kompakt, obere Schwingung, unten gerader Übergang zur Karte, dreizeiliger Leitsatz.
-- Einheitliche, flache Navigationsleiste **Karte · Filter · Spots · Mein Tag · Spots Plus**, auf aktiver Karte oranger Hintergrund. Treffen & Spielen bleibt im Menü/Spot, nicht in der unteren Leiste.
+- Einheitliche, flache Navigationsleiste **Karte · Filter · Spots · Mein Tag · Spots Plus**, **ohne Aktivhintergrund**, alle fünf Labels im gleichen FSM-Braun. Treffen & Spielen bleibt im Menü/Spot, nicht in der unteren Leiste.
 - Orange Hauptaktionen mit brauner Schrift/Symbolik, grüne sekundäre Aktionen, konturierte Info-Icons und einheitliche Schließen-X; markante Features nicht durch neue Designs ersetzen.
 - Wiedererkennbares **gefülltes grünes Herz** in Navigation/Spotkarten. Keine frühere Herz-Neuinterpretation.
 - 44-px-Aktionshöhen als Richtgröße, barrierefreie Ziele ohne dominierende Kästen; die tatsächliche iPhone-Rendergröße bleibt auf dem Gerät zu testen.

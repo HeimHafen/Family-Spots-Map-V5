@@ -13,6 +13,7 @@ const icons = {
   pin: '<path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>',
   hills: '<path d="m2 19 7-10 4 5 3-8 6 13H2Z"/>',
   route: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h8a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h8"/>',
+  close: '<path d="m6 6 12 12M18 6 6 18"/>',
 };
 const icon = name => `<svg class="cycle-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`;
 const elevation = { de: "Ca. 123 hm", en: "Approx. 123 m ascent", da: "Ca. 123 højdemeter" };
@@ -109,7 +110,7 @@ export function initCycleTours({ getLanguage, closeMenu, openStop, onBackToOverv
       ${filsoe.stops.map(stop => `<a class="cycle-stop cycle-nearby" href="${stop.url}" target="_blank" rel="noopener noreferrer">${icon(stop.icon)}<span><strong>${stop.title}</strong><small>${stop.text[language] || stop.text.de}</small></span>${icon("external")}</a>`).join("")}
       <a class="cycle-action" href="${filsoe.source}" target="_blank" rel="noopener noreferrer">${icon("route")}${viewRoute}${icon("external")}</a>
       <p class="cycle-credit"><a href="${filsoe.gpx}">${download}</a> · Varde Kommune / <a href="https://www.geodanmark.dk/home/vejledninger/vilkaar-for-data-anvendelse/">GeoDanmark, GeoFA · CC BY 4.0</a></p>`;
-    dialog.innerHTML = `<header><span>Family Spots Map</span><button type="button" aria-label="${close}" data-close>×</button></header><div class="cycle-content">${detail ? (isDenmark ? filsoeRoute : route) :
+    dialog.innerHTML = `<header><span>Family Spots Map</span><button type="button" aria-label="${close}" data-close>${icon("close")}</button></header><div class="cycle-content">${detail ? (isDenmark ? filsoeRoute : route) :
       `<h2 id="cycle-tours-heading" tabindex="-1">${icon("bike")}<span>${title}</span></h2><p>${intro}</p>${filters}${type === "family" ? (isDenmark ? filsoeRow : row) : `<p class="cycle-empty">${empty}</p>`}`}</div>`;
     dialog.querySelector(".cycle-content").scrollTop = 0;
     if (focusTarget) dialog.querySelector(focusTarget)?.focus({ preventScroll: true });

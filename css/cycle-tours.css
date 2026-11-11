@@ -31,7 +31,8 @@
 .fsm-cycle-tours p { margin: 0 0 12px; color: var(--cycle-muted); }
 .fsm-cycle-tours button { cursor: pointer; color: inherit; min-height: 44px; font: inherit; }
 .fsm-cycle-tours header button, .fsm-cycle-tours .cycle-back { background: none; border: 0; }
-.fsm-cycle-tours header button { width: 44px; font: 25px system-ui; }
+.fsm-cycle-tours header button { width: 44px; display:grid;place-items:center;padding:0; }
+.fsm-cycle-tours header button .cycle-icon { width:20px;height:20px; }
 .fsm-cycle-tours .cycle-back { padding: 0 0 8px; color: var(--cycle-olive); }
 .fsm-cycle-tours .cycle-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 12px; }
 .fsm-cycle-tours .cycle-filters button {

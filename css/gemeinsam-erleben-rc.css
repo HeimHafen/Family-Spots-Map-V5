@@ -25,7 +25,7 @@
 #fse-overlay .fse-preview-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:5px 12px;background:#edf0d7;color:#4a6034;font-size:clamp(11px,2.8vw,13px);font-weight:750;white-space:nowrap;line-height:1.4}
 #fse-overlay .fse-preview-badge svg{height:14px;width:14px}
 #fse-overlay .fse-landscape{height:clamp(78px,22vw,108px);width:calc(100% + 32px);margin:6px -16px 0;flex:none;background-image:url("../assets/design/main-header-landscape-reference-v909.webp");background-repeat:no-repeat;background-size:100% 100%;background-position:center bottom}
-#fse-overlay .fse-body{min-height:0;overflow:auto;overscroll-behavior:contain;flex:1;padding:0 13px 16px;-webkit-overflow-scrolling:touch}
+#fse-overlay .fse-body{min-height:0;overflow:auto;overscroll-behavior:contain;flex:1;padding:0 13px max(26px,env(safe-area-inset-bottom,0px));scroll-padding-block:18px 88px;-webkit-overflow-scrolling:touch}
 #fse-overlay .fse-body::-webkit-scrollbar{width:3px}#fse-overlay .fse-body::-webkit-scrollbar-thumb{background:#d0cabc;border-radius:999px}
 
 /* Woche: kompakt, Monatsübersicht über den mittleren Monatsknopf erreichbar. */
@@ -102,7 +102,7 @@
 #fse-overlay .fse-form{background:#fffaf3;border:1px solid #e4d9cb;padding:15px;border-radius:18px;margin:7px 1px 10px}
 #fse-overlay .fse-form h3{font:600 21px/1.25 Georgia,"Times New Roman",serif;margin:0 0 9px;color:#433329}
 #fse-overlay .fse-field{display:block;margin:11px 0;color:#5c4b3b;font-size:12px;font-weight:730}
-#fse-overlay .fse-field input, #fse-overlay .fse-field select, #fse-overlay .fse-field textarea{display:block;width:100%;margin-top:6px;padding:10px 11px;border:1px solid #daceba;border-radius:11px;background:#fffdfa;color:#403427;font-size:14px;min-height:44px}
+#fse-overlay .fse-field input, #fse-overlay .fse-field select, #fse-overlay .fse-field textarea{display:block;width:100%;margin-top:6px;padding:10px 11px;border:1px solid #daceba;border-radius:11px;background:#fffdfa;color:#403427;font-size:16px;min-height:44px}
 #fse-overlay .fse-field textarea{resize:vertical;min-height:75px}
 #fse-overlay .fse-form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 #fse-overlay .fse-check{display:flex;gap:8px;align-items:center;margin:13px 0;color:#5e5146;font-size:12px}#fse-overlay .fse-check input{accent-color:#698441;width:18px;height:18px}

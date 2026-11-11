@@ -4,7 +4,7 @@
 Orte entdecken. Menschen verbinden. Erinnerungen schaffen. Karte bleibt die Bühne; keine überladene Social-App.
 
 ## In diesem Update umgesetzt (ausgehend von V5 NAV)
-- Navigation: unverändert **Karte / Filter / Spots / Mein Tag / Spots Plus**; Karte orange als Symbol/Text, kein Aktivkasten.
+- Navigation: unverändert **Karte / Filter / Spots / Mein Tag / Spots Plus**; Karte orange als Symbol, **alle Texte dunkelbraun**, kein Aktivkasten.
 - Schattenhierarchie: gezielt deutlicher nur für Orange-Hauptaktionen; Grün sekundär; Karten zurückhaltend; Nav-Items flach.
 - Filter: Theme-Kacheln ohne automatische Silbentrennung, auch auf schmalen Displays.
 - Spotliste: zuschaltbare kompakte Übersicht; Details, Favoriten und Kartenaktionen bleiben erreichbar.
