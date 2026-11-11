@@ -13,7 +13,7 @@
 - Der Fotobutton bleibt leicht und unaufdringlich mit **braunem Kamera-Icon**.
 - „Direkt daneben“ erhält ausschließlich einen orangefarbenen Standort-Pin. Einzelne Spots darunter erhalten grüne, inhaltlich passende Piktogramme.
 - „Parken & Fußweg“: gedämpft-blauer runder Parkplatzmarker mit weißem **P**; Blau bleibt ein sachliches Verkehrssymbol, keine weitere Hauptfarbe.
-- Navigation: Karte (orange aktiv), Filter (grünes Regler-Icon), Spots (oranger Pin), Mein Tag (gefülltes grünes Herz), Spots Plus (orange Krone). Reihenfolge und Abstände unverändert.
+- Navigation: Karte (oranges Symbol, brauner Text, kein Aktivkasten), Filter (grünes Regler-Icon), Spots (oranger Pin), Mein Tag (gefülltes grünes Herz), Spots Plus (orange Krone). Reihenfolge und Abstände unverändert.
 - Kein alternativer Dark Mode; keine Änderungen an Speicherung, Tracking, Routen, Favoriten oder Offline-Datenlogik.
 
 ## Design-Tokens in der technischen Testfassung

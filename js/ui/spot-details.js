@@ -24,7 +24,7 @@ export function createSpotTypeChips(spot, lang) {
 function spotSectionIcon(name, className) {
   const paths = {
     pin: '<path d="M20 10c0 5.8-8 12-8 12S4 15.8 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
-    arrival: '<path d="M4 10h4l10-6v15L8 13H4Z"/><path d="m8 13 2 8h3l-2-7m10-4v4"/>'
+    arrival: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h8a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h8"/>'
   };
   const container = document.createElement('span');
   container.className = className;
@@ -672,6 +672,7 @@ export function createSpotDetailsController({
       section.className = "spot-nearby";
       const heading = document.createElement("strong");
       heading.textContent = { de: "In der Nähe entdecken", en: "Discover nearby", da: "Oplev i nærheden" }[currentLang];
+      heading.prepend(spotSectionIcon('pin', 'fsm-spot-heading-pin'));
       section.append(heading);
       for (const stop of Object.values(schachplatzNearbyStops)) {
         const link = document.createElement("a");
@@ -679,7 +680,10 @@ export function createSpotDetailsController({
         link.href = stop.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
+        // Same category-icon family as the Windheimstrasse neighborhood links.
+        link.append(categoryIcon(stop.icon === "cup" ? "cafe" : "park", "fsm-spot-nearby-icon"));
         const text = document.createElement("span");
+        text.className = "fsm-spot-nearby-name";
         const title = document.createElement("span");
         title.textContent = stop.title;
         const reason = document.createElement("small");

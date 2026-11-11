@@ -92,6 +92,21 @@ export function createMapToolbar({ dialog, leaveMap, onLayout }) {
     categories.toggleAttribute("data-more-right", start + categories.clientWidth < categories.scrollWidth - 1);
   }
   categories.addEventListener("scroll", updateThemeEdges, { ...options, passive: true });
+  function revealTheme(theme) {
+    if (!(theme instanceof Element) || !categories.contains(theme)) return;
+    const region = categories.getBoundingClientRect();
+    const item = theme.getBoundingClientRect();
+    const inset = 10;
+    if (item.left < region.left + inset) {
+      categories.scrollLeft -= region.left + inset - item.left;
+    } else if (item.right > region.right - inset) {
+      categories.scrollLeft += item.right - region.right + inset;
+    }
+    updateThemeEdges();
+  }
+  // Real keyboard focus and pointer selection keep the entire label in view.
+  categories.addEventListener("focusin", event => revealTheme(event.target.closest(".fsm-map-tool--theme")), options);
+  categories.addEventListener("click", event => revealTheme(event.target.closest(".fsm-map-tool--theme")), options);
   const themeResize = new ResizeObserver(updateThemeEdges);
   themeResize.observe(categories);
   const menu = button("menu", () => navigate("menu"), "fsm-map-tool--round");
@@ -211,6 +226,7 @@ export function createMapToolbar({ dialog, leaveMap, onLayout }) {
       if (focusedId !== null) {
         const target = [...categories.children].find(el => el.dataset.world === focusedId && !el.disabled);
         (target || categories.firstElementChild)?.focus({ preventScroll: true });
+        revealTheme(target || categories.firstElementChild);
       }
     }
     for (const b of categories.children) {
