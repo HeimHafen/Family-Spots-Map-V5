@@ -1,0 +1,26 @@
+Family Spots Map V5 | Mein Tag | Feinschliff
+
+Ausgangspunkt: Cloudflare-Teststand b7a33e9f6f93f25cabb39ef5f71d7514f9b2edf1.
+Nur die drei Dateien aus EINSPIELEN/ an den entsprechenden Pfaden im Testbranch ersetzen.
+TXT/ enthält dieselbe CSS-Datei als Text. Das WebP als Bilddatei übernehmen.
+RUECKSICHERUNG/ enthält die zwei Originale aus dem aktuellen Cloudflare-Teststand.
+
+Zusammenfassung
+Mein Tag: Original-Tilla und visueller Feinschliff
+
+Detaillierte Informationen
+Original-Tilla im Landschaftskopf, transparente Polaroids, einheitliche Abstände und größere Galerie-Bedienflächen.
+Das vorhandene Herz, die Navigation und die Tagebuchfunktionen werden unverändert verwendet.
+
+Source-Branch
+refs/heads/test/fsm-v5-konsolidierung
+
+Vorhandene oder neue Remote-Referenz
+refs/heads/test/fsm-v5-konsolidierung
+
+Force Push
+Aus
+
+Nach dem Build: https://fsm-v5-test.pages.dev öffnen und „Mein Tag“ in Safari prüfen.
+Der Cloudflare-Build versieht den Stand mit einer neuen Release-ID.
+Für die Rücksicherung die beiden Originaldateien an denselben Pfaden wiederherstellen.
