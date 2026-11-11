@@ -200,3 +200,107 @@ html.fsm-polished #spot-detail .spot-details-actions > :is(.spot-details-favorit
   html.fsm-polished #spot-detail .spot-details-title {font-size:20px;}
   html.fsm-polished #spot-detail .spot-details-header {gap:4px;}
 }
+
+
+/* Family Spots Map V5 | freigegebene Navigation | 11.11.2026
+ * Einheitlich in Startseite, Vollbildkarte, Tourenwelt, Tourenfilter und Kalender.
+ * Kein visueller Aktivkasten. Der aktuelle Bereich bleibt für Screenreader
+ * via aria-current="page" markiert. Die Funktionalität bleibt unverändert.
+ * Reihenfolge: Karte, Filter, Spots, Mein Tag, Spots Plus.
+ */
+:root {
+  --fsm-nav-icon-map: #f38312;
+  --fsm-nav-icon-filter: #427d1c;
+  --fsm-nav-icon-spot: #f38312;
+  --fsm-nav-icon-heart: #4c7924;
+  --fsm-nav-icon-plus: #eb820f;
+  --fsm-nav-ink: #3d2918;
+}
+
+/* Hauptnavigation: selektierte Bereiche ohne eingefärbte Kachel. */
+html.fsm-polished.fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item:not([hidden]),
+html.fsm-polished.fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item:not([hidden])[aria-current="page"] {
+  background: transparent !important;
+  color: var(--fsm-nav-ink) !important;
+  box-shadow: none !important;
+}
+html.fsm-polished.fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item[data-fsm-home-action="map"] {
+  background: transparent !important;
+  color: var(--fsm-nav-icon-map) !important;
+  box-shadow: none !important;
+}
+html.fsm-polished.fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item[data-fsm-home-action="map"] > svg {
+  color: var(--fsm-nav-icon-map) !important;
+}
+
+/* Die Vollbildkarte hat eigene Buttons und benötigt denselben ruhigen Zustand. */
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination,
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination[aria-current="page"] {
+  background: transparent !important;
+  color: var(--fsm-nav-ink) !important;
+  box-shadow: none !important;
+}
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination:first-child,
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination:first-child > svg {
+  background: transparent !important;
+  color: var(--fsm-nav-icon-map) !important;
+}
+
+/* Tourenwelt und Tourenfilter: keine aktive orange Schaltfläche. */
+html.fsm-polished .fsm-tourenwelt .tw-dock button,
+html.fsm-polished .fsm-tourenfilter .tw-dock button,
+html.fsm-polished .fsm-tourenwelt .tw-dock button[aria-current="page"],
+html.fsm-polished .fsm-tourenfilter .tw-dock button[aria-current="page"] {
+  background: transparent !important;
+  color: var(--fsm-nav-ink) !important;
+  box-shadow: none !important;
+}
+html.fsm-polished .fsm-tourenwelt .tw-dock button:first-child,
+html.fsm-polished .fsm-tourenfilter .tw-dock button:first-child,
+html.fsm-polished .fsm-tourenwelt .tw-dock button:first-child > svg,
+html.fsm-polished .fsm-tourenfilter .tw-dock button:first-child > svg {
+  color: var(--fsm-nav-icon-map) !important;
+}
+
+/* Kalender: bisher andere Reihenfolge und grüne Karten-Kachel.
+ * Der JS-Aufbau wird im selben Update auf diary-vor-plus umgestellt.
+ */
+#fse-overlay .fse-dock {
+  box-sizing: border-box;
+  background: #fff9ef !important;
+  border: 1px solid #e4d6c6 !important;
+  border-radius: 19px !important;
+  padding: 4px !important;
+  gap: 2px !important;
+  box-shadow: 0 4px 14px rgba(68,51,29,.17) !important;
+  width: calc(100% - 36px);
+  max-width: 620px;
+  margin: 6px auto max(8px,env(safe-area-inset-bottom,0px));
+}
+#fse-overlay .fse-dock-item,
+#fse-overlay .fse-dock-item--map {
+  background: transparent !important;
+  color: var(--fsm-nav-ink) !important;
+  box-shadow: none !important;
+  min-height: 44px;
+  border-radius: 14px;
+  font-size: clamp(10px,2.8vw,11px) !important;
+}
+#fse-overlay .fse-dock-item[data-nav="map"],
+#fse-overlay .fse-dock-item[data-nav="map"] > .fse-svg {
+  color: var(--fsm-nav-icon-map) !important;
+  background: transparent !important;
+}
+#fse-overlay .fse-dock-item[data-nav="filters"] > .fse-svg { color: var(--fsm-nav-icon-filter) !important; }
+#fse-overlay .fse-dock-item[data-nav="spots"] > .fse-svg { color: var(--fsm-nav-icon-spot) !important; }
+#fse-overlay .fse-dock-item[data-nav="diary"] > .fse-svg { color: var(--fsm-nav-icon-heart) !important; fill: #7fa825 !important; }
+#fse-overlay .fse-dock-item[data-nav="plus"] > .fse-svg { color: var(--fsm-nav-icon-plus) !important; fill: var(--fsm-nav-icon-plus) !important; }
+
+/* Tastatur-/VoiceOver-Nutzung bleibt erkennbar; Touch erhält keine Fokus-Kachel. */
+html.fsm-polished #fsm-home-nav .fsm-home-nav__item:focus-visible,
+html.fsm-polished #fsm-map-fullscreen .fsm-map-tool--destination:focus-visible,
+html.fsm-polished .tw-dock button:focus-visible,
+#fse-overlay .fse-dock-item:focus-visible {
+  outline: 2px solid #5d7c3f !important;
+  outline-offset: -2px !important;
+}
