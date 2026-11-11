@@ -1,5 +1,5 @@
 import { initCycleTours } from "./ui/cycle-tours.js";
-import { initTourenwelt } from "./ui/tourenwelt.js?v=20261111-unified-v5-1";
+import { initTourenwelt } from "./ui/tourenwelt.js?v=20261111-meintag-v5-test-1";
 // js/app.js
 // ======================================================
 // Family Spots Map – Hauptlogik
@@ -25,9 +25,9 @@ document.addEventListener("keydown", event => {
 
 import { evaluateSelection, selectShortcut, shortcutIsSelected, shortcutLabel } from "./filter-model.js";
 import { createMapToolIcon } from "./ui/map-toolbar.js";
-import { createHomeNavigation } from "./ui/home-navigation.js?v=20261111-unified-v5-1";
+import { createHomeNavigation } from "./ui/home-navigation.js?v=20261111-meintag-v5-test-1";
 import { initCommunityPlay } from "./features/community-play.js?v=20261109-details-v43";
-import { initPrivateCalendar } from "./features/gemeinsam-erleben-rc.js?v=20261111-unified-v5-1";
+import { initPrivateCalendar } from "./features/gemeinsam-erleben-rc.js?v=20261111-meintag-v5-test-1";
 import { describeFilters } from "./ui/filter-summary.js";
 import { resultsCopy } from "./ui/filter-results.js";
 import { categoryIcon } from "./ui/category-icons.js";
@@ -37,6 +37,7 @@ import { hasCategorySelection, isExpiredEvent, FACETS, labelOf, facetValue, plac
 import { initFilterSelects } from "./ui/filter-select.js";
 
 import { initDiaryView } from "./features/diary-view.js";
+import { initDiaryPremium } from "./features/diary-premium.js";
 
 import { initDaylogPhotos } from "./features/daylog-photos.js?v=20261105-photo-v928";
 
@@ -94,7 +95,7 @@ import {
   updateMapStatusLanguage,
   renderMarkers,
   hasValidLatLng
-} from "./map.js?v=20261111-unified-v5-1";
+} from "./map.js?v=20261111-meintag-v5-test-1";
 
 import { initRouter } from "./router.js?v=20261109-details-v43";
 import { initToast, showToast } from "./toast.js";
@@ -4342,6 +4343,8 @@ async function init() {
       afterImport: () => refreshPersonalData({ daylog: true, favorite: true }),
       hasDraft: () => daylogMutationPending || !!daylogPhotos?.hasDraft() || !!daylogTextEl?.value.trim() || daylogEditDrafts.size > 0
     });
+    // Isolated V5 design only: records, photos and navigation remain the original implementations.
+    initDiaryPremium();
     window.addEventListener("storage", event => {
       if (event.key === null || event.key === PLUS_STORAGE_KEY) loadPlusStateFromStorage({ reapplyFilters: true });
       if (event.key === null || event.key === DAYLOG_STORAGE_KEY || event.key === "fs_favorites") {
