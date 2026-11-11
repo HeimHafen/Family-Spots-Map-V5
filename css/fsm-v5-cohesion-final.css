@@ -14,6 +14,8 @@ html.fsm-polished {
   --fsm-c5-shadow-card: 0 5px 16px rgba(73,54,33,.085);
   --fsm-c5-shadow-sheet: 0 16px 44px rgba(42,35,25,.19);
   --fsm-c5-focus: #3e6d40;
+  --fsm-c5-touch-target: 44px;
+  --fsm-c5-action-radius: 14px;
 }
 /* Nur erkennbare Hauptaktionen erhalten eine deutliche Tiefe.
    Kein Schatten fuer Nav-Einzelelemente, schlichte Links und Textfelder. */
@@ -31,6 +33,36 @@ html.fsm-polished :is(
 ):not([disabled]):not([aria-disabled="true"]) {
   box-shadow: var(--fsm-c5-shadow-primary) !important;
   text-shadow: none !important;
+}
+/* Eine einzige Bedienlogik fuer Hauptaktionen in bestehenden Features.
+   Die Navigation ist ausgenommen und behaelt ihren eigenen 44-px-Vertrag.
+   Keine Aenderungen an Farben, Beschriftungen oder Klick-Handlern. */
+html.fsm-polished :is(
+  #filter-modal #filter-modal-apply,
+  #spot-detail > .spot-community-open,
+  #fsm-community-overlay .fsm-community-primary,
+  #fse-overlay .fse-cta,
+  .fsm-tourenwelt .tw-orange
+) {
+  box-sizing: border-box;
+  min-height: var(--fsm-c5-touch-target);
+  border-radius: var(--fsm-c5-action-radius);
+  color: var(--fsm-c5-ink) !important;
+  text-shadow: none !important;
+}
+/* Zweitrangige Aktionen bleiben bewusst flacher und gruen beziehungsweise neutral. */
+html.fsm-polished :is(
+  #filter-modal #filter-modal-reset,
+  #spot-detail > .spot-private-plan,
+  #spot-detail .spot-gallery__summary,
+  #spot-detail .spot-parking > summary,
+  #fsm-home-sheet #spot-list .fsm-list-view-toggle,
+  #fse-overlay .fse-cancel,
+  .fsm-tourenwelt .tw-soft
+) {
+  box-sizing: border-box;
+  min-height: var(--fsm-c5-touch-target);
+  border-radius: var(--fsm-c5-action-radius);
 }
 /* Tillas Spielideen-Flaeche liegt auf einem Pseudoelement. */
 html.fsm-polished[data-theme="light"] body[data-app-view="map"]

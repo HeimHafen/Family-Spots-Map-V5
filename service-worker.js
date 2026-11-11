@@ -1,5 +1,5 @@
   // Family Spots Map: vollständige Offline-Grundfunktion, ohne Kartenkachel-Downloads.
-const CACHE_VERSION = "20261111-navspotfix-1";
+const CACHE_VERSION = "20261111-components-1";
 const ROOT = new URL("./", self.location.href);
 const CACHE_PREFIX = "fsm-v5-" + ROOT.pathname.replace(/[^a-z0-9]/gi, "_") + "-";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
@@ -218,7 +218,7 @@ async function validateImage(response, url) {
   if (view.getUint32(8) !== 13 || view.getUint32(12) !== 0x49484452 || view.getUint32(16) !== size || view.getUint32(20) !== size) throw new Error(`Invalid app icon dimensions: ${relative}`);
 }
 const RELEASE_HASHES = {
-  "css/fsm-touren-reference.css": "db21cfc3375644e0ebe1fbfee645fb6a65370d8867129960f22bcf7905c2734c",
+  "css/fsm-touren-reference.css": "cdaa7869bca72de445576bee1f0fc0f3af390a023045868cb3012f78578bb36a",
   "data/tours.json": "d98ad4d6fdddaca220147f3ee113e185010783e1db8840d3f05706db2e51b7de",
   "css/tourenwelt.css": "3345cd916a6bba4675e993b83c8a122bdd2e91a7da3ad262933d9026bdf0744a",
   "js/ui/tourenwelt.js": "d537a76d5f7257971affeb5e5a392e118cf7f89af5dd05648931f5ef1ada05be",
@@ -235,21 +235,21 @@ const RELEASE_HASHES = {
   "css/theme.css": "1623d0ad94b1d92ba65f2777356dfab47f75d78004e82bc080cd40450fa59a2d",
   "js/filter-model.js": "1eaee4ef7c57398042071867e1444c18e3c63370174d788f6e5b563123962c2f",
   "css/map-spots.css": "fc811f5faf3a652126a6f8fbc25b8de0501144a43eff5b7e5171cd1f45207923",
-  "da/index.html": "b67b6a63cffd33afea82c349ef4c32b326e075dc48d1402b5398cb2c23663921",
+  "da/index.html": "c067826c69223a1b19ce9fe968b92024a83c29201f4b898cb871ade8af21c346",
   "data/i18n/da.json": "951da56127bece47feacd0b14f36bce865da645f7125ea49664d4766c1e61e41",
   "data/i18n/de.json": "db4a3703a47a36c9b3e0735da710e20f17e2b8c8fc041a60ba7ad0a7b9ad29ce",
   "data/i18n/en.json": "48e6dc58647ab76a07b38360bbd3d704e3058fbdda9c0cdb60f0e8441ed0a9b6",
   "data/play-ideas.json": "c18f791a6f9bc6490e5414f7ea4ba3e5735ef597d70235e93530f0ee1ba7dc07",
   "data/spots.json": "c6557b4998710233813d58617b15b459a419ae6f1dda9af7f1100608708d206a",
-  "en/index.html": "82b0f18885af1871dee3e8b282ba3e8598f3529761f5275ec29c05007e26bb4b",
-  "index.html": "b2c981064dad7e48fc3fb3bba0303623871d4c7ba74483383534a8ebd3a0d3b2",
-  "js/app.js": "70a42d5d43e9370977a7333a197208b7bd95f08ec6555129b7b3e06ee9c78e78",
+  "en/index.html": "c66f4202bfd05b3b6135d3a5d60ada4e2b028e35ab487702b63d198df1947eb6",
+  "index.html": "66f9d5cca849c1dcab7bb8bd6abb55b318dffaec4157456641e66dd4aa50b384",
+  "js/app.js": "2f796ab75e675ce5bf5e38addc964cc732b83eaeba7bff68ff64d0a990f71621",
   "js/config.js": "d5b73ee24a85bc392458fa33a8167c9a1749d467b6f3e8fea804a8d7099fa48a",
   "js/features/personal-backup.js": "e1019180ef2046c93ee0ae7c2a9fcedec9af1375496a811f50bf81afaca61e86",
   "js/features/personal-storage.js": "32876282f17c01fcd46b08b7e8caed4e54aaa5b77052ed725fdc9b5b1b4e1f8b",
   "js/features/tilla.js": "0f6b03a39a5c05f68e24159c09ab4339074d6d1ab388452f13424b873b9496e3",
   "js/i18n.js": "16488d8e1e10270b4b9f40b2a151b52fc0edf1865fe90dee2dfbd40188d2b585",
-  "js/map.js": "77251e7f553e278e27bc48267b47d9799065e1bf39d89fa223189feffc7dff42",
+  "js/map.js": "1e0325b44d72e6192493f17726f0fbe98fcad544ca65093cf166b6def08da5b0",
   "js/ui/menu.js": "87a9bd34bd2cd9a2e4510629c69932541e911522df89c322544aae0bb46e7311",
   "js/ui/spot-details.js": "98945421bc0a3631ef973a05a30011ecf451740e35424ac73fca2408a1215ecb",
   "offline.html": "e3b8b124835d55406742d8fcf922f5e76d4ee2d6dac9577430fa716b83c08b6f",
@@ -283,7 +283,7 @@ const RELEASE_HASHES = {
   "css/badges.css": "368e7f67b004d7ee8a5f030312260aba6aad2a1e93d8c4235bc0cacca808f15b",
   "js/filters/tags.js": "fbea5599ad6503ccb8a2bb1da9a7d46a3d1bf5ce27afe46c8f1f280ac2ada923",
   "js/filters/logic.js": "775816b277bf8e393bc942f5782e335f038ccbaa5f01514f6e9410db085fc50f",
-  "css/styles.css": "ced5ea07301acf499c75e22c486e1ad1d3420e18f6752c2649a286ab3bd9fc10",
+  "css/styles.css": "544512ea0158a3fc31d353b5ecbab915fbeef3f5c5c7f9f590e84fa58b776481",
   "js/ui/map-fullscreen.js": "a7ab652087277cbb5bdb53fb2265eedf264605aa93736343e7f28dfffac63161",
   "js/categories.js": "194787250b762a5f26f62b765bd39596f8c9da7d2a72dbdc067a3c195db63dd6",
   "js/ui/category-explorer.js": "bd30833878af0ee06336a5a154d2b0668ddd55ceaf18850b0ba121ce55b82e8d",
@@ -313,7 +313,7 @@ const RELEASE_HASHES = {
   "css/gemeinsam-erleben-rc.css": "ba45c420e13fe5601bf5003d1d2c07af84f15e95d6847929e5b5dd8cc95b2911",
   "css/fsm-cohesion-v34.css": "4f5ccce83011a5657d3610e7cc02df5d43e2375246911624629d13243cef3303",
   "js/features/calendar-backup.js": "abedcb203b00ece33fcde80069fc1af5e328892f625d15edbe5818781696a359",
-  "css/fsm-v5-cohesion-final.css": "1e2646f97a22145db0468f0f5fe120ccc5254e027a33cb91bf8a4b233a0cf5c6",
+  "css/fsm-v5-cohesion-final.css": "3677ecb35afd00ce228aa4900c5eddf2926af10874f0f1d2ce970c3ea423f173",
   "css/fsm-spot-unity.css": "c3677f4ce8c67ea7931d0e00eefb1b4e647ed07c534a9a8afe06adcb9c04021f",
   "css/fsm-navigation-system.css": "59fd05cfb6e5f0a60d5b8e05bd83927ff26ea8483bb6fe9aaeaaa2572d547ff9",
   "js/ui/navigation-spec.js": "85673b3c4a88e9adddb6fa7620ecef4e692d298355e88d791561232c30ef6f58",

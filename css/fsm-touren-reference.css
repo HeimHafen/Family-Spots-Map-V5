@@ -27,8 +27,10 @@
 .fsm-tourenfilter .tw-filter-head h2{font:700 clamp(25px,6.2vw,34px)/1.13 Georgia,'Times New Roman',serif;letter-spacing:-.5px;color:#382517;white-space:normal;margin:0 47px 0 0;}
 .fsm-tourenfilter .tw-filter-lead{padding-left:clamp(35px,9vw,70px);font-size:clamp(11px,2.8vw,13px);color:#776a6e;margin:0 0 11px;}
 .fsm-tourenfilter .tw-close {position:absolute;top:1px;right:-5px;display:grid;place-items:center;width:44px;height:44px;min-height:44px;border:none;border-radius:50%;background:transparent;}
-.fsm-tourenfilter .tw-close::before{content:'';position:absolute;width:35px;height:35px;border-radius:50%;background:#f8eada;z-index:0;}
-.fsm-tourenfilter .tw-close svg{position:relative;z-index:1;width:19px;height:19px;color:#64492c;}
+/* V5: keine dekorative Scheibe unter dem X; Hitbox bleibt 44 x 44 px. */
+.fsm-tourenfilter .tw-close::before{content:none;display:none;}
+.fsm-tourenfilter .tw-close svg{position:relative;z-index:1;width:19px;height:19px;color:#64492c;stroke-width:1.7;}
+.fsm-tourenfilter .tw-close:focus-visible{outline:2px solid #567744;outline-offset:1px;}
 .fsm-tourenfilter .tw-filter-fields{display:flex;flex-direction:column;gap:0;}
 .fsm-tourenfilter .tw-select,.fsm-tourenfilter .tw-group>span{margin:10px 0 0;display:block;color:#4a3726;font-size:10px;letter-spacing:1.5px;font-weight:800;line-height:1.25;text-transform:uppercase;}
 .fsm-tourenfilter select{appearance:auto;display:block;width:100%;min-height:44px;padding:7px 10px;margin:6px 0 0;border-radius:10px;border:1px solid #bdb4ac;background:#fffefd;color:#33281d;font-size:14px;font-weight:550;letter-spacing:0;text-transform:none;}
