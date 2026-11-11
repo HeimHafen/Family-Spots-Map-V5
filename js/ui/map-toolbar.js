@@ -2,6 +2,7 @@
 // No second map, copied spot dataset or independent filter engine.
 import { shortcutIsSelected, shortcutLabel } from "../filter-model.js";
 import { createHeartIcon, createCrownIcon } from "../utils/dom.js";
+import { NAV_ORDER, navCopy } from "./navigation-spec.js";
 
 const COPY = {
   de: { top: "Kartenwerkzeuge", categories: "Themen wählen", nav: "Hauptnavigation", search: "Spots suchen", placeholder: "Ort oder Spot suchen …", clear: "Suche leeren", closeSearch: "Suche schließen", menu: "Menü", all: "Alle", allTitle: "Alle Themen – andere Filter bleiben erhalten", map: "Karte", filters: "Filter", spots: "Spots", plus: "Spots Plus", diary: "Mein Tag", play: "Spiel & Bewegung", nature: "Natur", water: "Wasser", animals: "Tiere", results: n => `${n} Treffer`, loading: "Spots werden geladen …", error: "Spots konnten nicht geladen werden" },
@@ -119,8 +120,10 @@ export function createMapToolbar({ dialog, leaveMap, onLayout }) {
   const nav = document.createElement("nav");
   nav.className = "fsm-map-nav";
   const destinations = new Map();
-  for (const name of ["map", "filters", "spots", "diary", "plus"]) {
+  for (const name of NAV_ORDER) {
     const el = button(name, () => { if (name !== "map") navigate(name); }, "fsm-map-tool--destination");
+    el.dataset.nav = name;
+    el.firstElementChild?.classList.add("fsm-nav-icon");
     if (name === "map") el.setAttribute("aria-current", "page");
     destinations.set(name, el);
     nav.append(el);
@@ -148,7 +151,7 @@ export function createMapToolbar({ dialog, leaveMap, onLayout }) {
     input.setAttribute("aria-label", copy.search);
     input.placeholder = copy.placeholder;
     for (const binding of bindings) {
-      const label = binding.el === clear ? copy.clear : copy[binding.name];
+      const label = binding.el === clear ? copy.clear : (NAV_ORDER.includes(binding.name) ? navCopy(document.documentElement.lang)[binding.name] : copy[binding.name]);
       binding.label.textContent = label;
       binding.el.setAttribute("aria-label", label);
       binding.el.title = label;

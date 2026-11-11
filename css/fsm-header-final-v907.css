@@ -176,10 +176,6 @@
     --fsm-palette-cluster: #8fbf5a;
     --fsm-palette-orange: #f58b20;
   }
-  html.fsm-polished[data-theme="light"].fsm-home-nav-ready #fsm-home-nav.fsm-home-nav
-    > .fsm-home-nav__item[aria-current="page"] {
-    background: var(--fsm-nav-active) !important;
-  }
   html.fsm-polished[data-theme="light"] #fsm-home-nav .fsm-home-nav__item > .fsm-daylog-heart {
     fill: var(--fsm-palette-heart) !important;
   }

@@ -2,6 +2,8 @@
 // Public registration remains disabled; drafts stay only on this device.
 // Keep the existing storage key for compatibility with older private drafts.
 import { createModalController } from "../ui/modal.js";
+import { NAV_ORDER, navCopy } from "../ui/navigation-spec.js";
+import { navigationIconHtml } from "../ui/navigation-icons.js";
 
 const STORAGE_KEY = "fsm-together-rc-private-v1";
 const LOCK_ICON = '<svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2"/><path d="M5 7V5a3 3 0 0 1 6 0v2m-3 3v1"/></svg>';
@@ -88,7 +90,6 @@ const LEAF_SPRIG = `<svg viewBox="0 0 36 48" aria-hidden="true" focusable="false
 const icon = (key, cls="") => `<svg class="fse-svg ${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]}</svg>`;
 const startOfWeek = date => {const d=new Date(date.getFullYear(), date.getMonth(), date.getDate());d.setDate(d.getDate()-(d.getDay()+6)%7);return d;};
 const addDays = (date,days) => { const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());d.setDate(d.getDate()+days);return d;};
-const navLabel = {de:{map:"Karte",filters:"Filter",spots:"Spots",plus:"Spots Plus",diary:"Mein Tag",navigation:"Navigation"},en:{map:"Map",filters:"Filters",spots:"Spots",plus:"Spots Plus",diary:"My day",navigation:"Navigation"},da:{map:"Kort",filters:"Filtre",spots:"Spots",plus:"Spots Plus",diary:"Min dag",navigation:"Navigation"}};
 
 let overlay, body, footer, modal, dock;
 let previousBodyOverflow = null;
@@ -102,7 +103,7 @@ export function initPrivateCalendar({ closeMenu, captureMemory } = {}) {
  menuList.querySelector("#btn-open-favorites")?.after(button);
  if(!button.isConnected)menuList.prepend(button);
  button.addEventListener("click",()=>{closeMenu?.();open();});
- overlay=document.createElement("div");overlay.id="fse-overlay";overlay.hidden=true;overlay.innerHTML=`<section class="fse-shell" role="dialog" aria-modal="true" aria-labelledby="fse-title"><header class="fse-header"><div class="fse-brand"><img src="assets/flags/flag-de.svg" alt="" class="fse-flag"><span id="fse-eyebrow">Family Spots Map</span><img src="assets/flags/flag-dk.svg" alt="" class="fse-flag"></div><button type="button" class="fse-icon-btn" data-fse="close" aria-label="Close">${icon("close")}</button><h2 id="fse-title"></h2><span class="fse-preview-badge" id="fse-preview-badge"></span><div class="fse-landscape" aria-hidden="true"></div></header><div class="fse-body" id="fse-body"></div><footer class="fse-footer" id="fse-footer"></footer><nav class="fse-dock" aria-label="Navigation">${["map","filters","spots","diary","plus"].map(n=>`<button type="button" data-fse="nav" data-nav="${n}" class="fse-dock-item${n==="map"?" fse-dock-item--map":""}">${icon(n)}<span class="fse-dock-label"></span></button>`).join("")}</nav></section>`;
+ overlay=document.createElement("div");overlay.id="fse-overlay";overlay.hidden=true;overlay.innerHTML=`<section class="fse-shell" role="dialog" aria-modal="true" aria-labelledby="fse-title"><header class="fse-header"><div class="fse-brand"><img src="assets/flags/flag-de.svg" alt="" class="fse-flag"><span id="fse-eyebrow">Family Spots Map</span><img src="assets/flags/flag-dk.svg" alt="" class="fse-flag"></div><button type="button" class="fse-icon-btn" data-fse="close" aria-label="Close">${icon("close")}</button><h2 id="fse-title"></h2><span class="fse-preview-badge" id="fse-preview-badge"></span><div class="fse-landscape" aria-hidden="true"></div></header><div class="fse-body" id="fse-body"></div><footer class="fse-footer" id="fse-footer"></footer><nav class="fse-dock" aria-label="Navigation">${NAV_ORDER.map(n=>`<button type="button" data-fse="nav" data-nav="${n}" class="fse-dock-item${n==="map"?" fse-dock-item--map":""}">${navigationIconHtml(n, {calendar:true})}<span class="fse-dock-label"></span></button>`).join("")}</nav></section>`;
  document.body.append(overlay);modal=createModalController(overlay);body=overlay.querySelector("#fse-body");footer=overlay.querySelector("#fse-footer");dock=overlay.querySelector(".fse-dock");
  overlay.addEventListener("click",delegate);
  overlay.addEventListener("change",change);
@@ -167,8 +168,8 @@ function render(){
  overlay.querySelector("#fse-eyebrow").textContent=t.eyebrow;
  overlay.querySelector("#fse-title").textContent=t.name;
  overlay.querySelector("#fse-preview-badge").innerHTML=LOCK_ICON+clean(t.preview);
- dock.setAttribute("aria-label",navLabel[lang].navigation);
- dock.querySelectorAll("[data-nav]").forEach(button => {button.querySelector(".fse-dock-label").textContent=navLabel[lang][button.dataset.nav];});
+ dock.setAttribute("aria-label",navCopy(lang).nav);
+ dock.querySelectorAll("[data-nav]").forEach(button => {button.querySelector(".fse-dock-label").textContent=navCopy(lang)[button.dataset.nav];});
  overlay.querySelector("[data-fse=close]").setAttribute("aria-label",t.close);
  const active = document.activeElement;
  const action = overlay.contains(active) ? active.dataset.fse : null;

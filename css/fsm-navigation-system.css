@@ -1,0 +1,136 @@
+/* Family Spots Map V5 — EIN Designsystem für alle fünf Navigationsziele.
+   Reihenfolge und SVGs kommen aus js/ui/navigation-spec.js und navigation-icons.js.
+   Keine aktive Hintergrundkachel, keine Schatten auf Einzeltabs; Fokus sichtbar.
+   Wichtig: Dieses Stylesheet ist die letzte Stylesheet-Datei im Dokument.
+*/
+:root {
+  --fsm-nav-paper: #fff9ef;
+  --fsm-nav-border: #e3d6c6;
+  --fsm-nav-text: #3d2918;
+  --fsm-nav-orange: #f38312;
+  --fsm-nav-green: #427d1c;
+  --fsm-nav-heart: #4c7924;
+  --fsm-nav-radius: 21px;
+  --fsm-nav-focus: #567744;
+}
+/* Gleicher Hintergrund, dieselben fünf Spalten; kein farbiger Active-Tab. */
+html.fsm-polished :is(
+  #fsm-home-nav.fsm-home-nav,
+  #fsm-map-fullscreen .fsm-map-nav,
+  .fsm-tourenwelt .tw-dock,
+  .fsm-tourenfilter .tw-dock,
+  #fse-overlay .fse-dock
+) {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--fsm-nav-border);
+  border-radius: var(--fsm-nav-radius);
+  background: var(--fsm-nav-paper);
+  box-shadow: 0 4px 14px rgba(68, 51, 29, .12);
+}
+html.fsm-polished :is(
+  #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item,
+  #fsm-map-fullscreen .fsm-map-nav > .fsm-map-tool--destination,
+  .fsm-tourenwelt .tw-dock > button,
+  .fsm-tourenfilter .tw-dock > button,
+  #fse-overlay .fse-dock > .fse-dock-item
+) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 53px;
+  padding: 5px 1px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent !important;
+  color: var(--fsm-nav-text) !important;
+  box-shadow: none !important;
+  text-align: center;
+  font: 600 clamp(10px, 2.7vw, 11px)/1.18 system-ui, -apple-system, sans-serif;
+  text-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Das Ziel ist semantisch aria-current, optisch kein aktiver Kasten. */
+html.fsm-polished :is(
+  #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item,
+  #fsm-map-fullscreen .fsm-map-nav > .fsm-map-tool--destination,
+  .fsm-tourenwelt .tw-dock > button,
+  .fsm-tourenfilter .tw-dock > button,
+  #fse-overlay .fse-dock > .fse-dock-item
+)[aria-current="page"] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html.fsm-polished :is(
+  #fsm-home-nav .fsm-home-nav__item,
+  #fsm-map-fullscreen .fsm-map-tool--destination,
+  .tw-dock button,
+  #fse-overlay .fse-dock-item
+) .fsm-nav-icon {
+  display: block !important;
+  flex: 0 0 auto;
+  width: 22px !important;
+  height: 22px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  stroke: currentColor;
+  text-shadow: none;
+}
+/* Die Farbzuordnung ist unabhängig davon, welcher Bereich aktiv ist. */
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="map"],
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="map"] :is(.fsm-nav-icon,.fsm-home-nav__label,.fsm-map-tool__label,span) {
+  color: var(--fsm-nav-orange) !important;
+}
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="filters"] > .fsm-nav-icon {color:var(--fsm-nav-green) !important;}
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="spots"] > .fsm-nav-icon {color:var(--fsm-nav-orange) !important;}
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="diary"] > .fsm-nav-icon {color:var(--fsm-nav-heart) !important;fill:#80aa2c !important;}
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav="plus"] > .fsm-nav-icon {color:var(--fsm-nav-orange) !important;fill:var(--fsm-nav-orange) !important;}
+/* Sichtbarer Tastatur-/VoiceOver-Fokus, kein permanenter Fokusrahmen. */
+html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock)
+  [data-nav]:focus-visible {
+  outline: 2px solid var(--fsm-nav-focus) !important;
+  outline-offset: -2px;
+}
+@media (max-width:359px) {
+  html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen .fsm-map-nav, .tw-dock, #fse-overlay .fse-dock) {gap:0;padding:3px;}
+  html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock) [data-nav] {font-size:10px !important;}
+}
+@media (forced-colors:active) {
+  html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock) [data-nav] {
+    color: ButtonText !important;
+    border: 1px solid ButtonText !important;
+  }
+  html.fsm-polished :is(#fsm-home-nav, #fsm-map-fullscreen, .tw-dock, #fse-overlay .fse-dock) .fsm-nav-icon {color:ButtonText !important;}
+}
+
+/* Platzierung gehört zur jeweiligen Oberfläche; Darstellung ist gemeinsam. */
+html.fsm-polished :is(.fsm-tourenwelt,.fsm-tourenfilter) .tw-dock {
+  flex: 0 0 auto;
+  width: calc(100% - 24px);
+  max-width: 620px;
+  margin: 8px auto max(8px,env(safe-area-inset-bottom,0px));
+}
+html.fsm-polished #fse-overlay .fse-dock {
+  width: calc(100% - 36px);
+  max-width: 620px;
+  margin: 6px auto max(8px,env(safe-area-inset-bottom,0px));
+}
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav {
+  left: max(12px, env(safe-area-inset-left,0px));
+  right: max(12px, env(safe-area-inset-right,0px));
+  max-width: 620px;
+}

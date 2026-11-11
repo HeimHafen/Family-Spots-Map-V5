@@ -47,10 +47,6 @@
     height: 21px !important;
     flex-shrink: 0 !important;
   }
-  html[data-theme="light"].fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item[aria-current="page"] {
-    background: var(--fsm-nav-active) !important;
-    color: #fffaf2 !important;
-  }
   html[data-theme="light"].fsm-home-nav-ready #fsm-home-nav.fsm-home-nav > .fsm-home-nav__item[data-fsm-home-action="community"] {
     display: none !important;
   }

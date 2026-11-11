@@ -99,7 +99,6 @@
 .fsm-tourenwelt .tw-privacy{font-size:11px;color:var(--tw-muted);margin:18px 0;text-align:center;}
 .fsm-tourenwelt .tw-dock{display:grid;flex:none;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;background:#fffaf1;border-top:1px solid #e5d9c7;padding:5px max(10px,env(safe-area-inset-left)) max(7px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-right));}
 .fsm-tourenwelt .tw-dock button{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:58px;gap:2px;border:0;border-radius:15px;background:transparent;color:var(--tw-ink);font-size:clamp(10px,2.8vw,12px);font-weight:650;line-height:1.1;}
-.fsm-tourenwelt .tw-dock button[aria-current="page"]{background:var(--tw-green);color:white;}
 .fsm-tourenwelt .tw-dock svg{width:21px;height:21px;}
 .fsm-tourenwelt .tw-dock button:nth-child(4) svg{color:#d59a0b;}
 .fsm-tourenwelt .tw-dock button:nth-child(5) svg{color:#68883d;fill:#7fa54c;}

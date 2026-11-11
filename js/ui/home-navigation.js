@@ -1,6 +1,8 @@
 // Family Spots Map V84 – a single home navigation, sharing existing controls.
 // The actual filter/spot sections are moved, never copied or reimplemented.
-import { createMapToolIcon } from "./map-toolbar.js?v=20261110-nav-unified-compact-1";
+import { createMapToolIcon } from "./map-toolbar.js";
+import { createNavigationIcon } from "./navigation-icons.js";
+import { NAV_ORDER, navCopy } from "./navigation-spec.js";
 
 const COPY = {
   de: {nav:"Hauptnavigation",map:"Karte",filters:"Filter",spots:"Spots",plus:"Spots Plus",diary:"Mein Tag",close:"Schließen",sheetFilter:"Filter einstellen",sheetSpots:"Spots ansehen"},
@@ -42,12 +44,13 @@ export function createHomeNavigation({ plusEnabled = true, diaryEnabled = true }
   let previousParent = null;
   let nextSibling = null;
 
-  for (const name of ["map", "filters", "spots", "diary", "plus"]) {
+  for (const name of NAV_ORDER) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "fsm-home-nav__item";
     button.dataset.fsmHomeAction = name;
-    button.append(createMapToolIcon(name));
+    button.dataset.nav = name;
+    button.append(createNavigationIcon(name));
     const label = document.createElement("span");
     label.className = "fsm-home-nav__label";
     button.append(label);
@@ -58,9 +61,10 @@ export function createHomeNavigation({ plusEnabled = true, diaryEnabled = true }
   }
   const paint = () => {
     const copy = text();
-    nav.setAttribute("aria-label", copy.nav);
+    const navigation = navCopy(document.documentElement.lang);
+    nav.setAttribute("aria-label", navigation.nav);
     Object.entries(sources).forEach(([key, el]) => { if (el) el.dataset.fsmSection = key; });
-    for (const [name, item] of buttons) { item.label.textContent = copy[name]; item.button.setAttribute("aria-label", copy[name]); }
+    for (const [name, item] of buttons) { item.label.textContent = navigation[name]; item.button.setAttribute("aria-label", navigation[name]); }
     closeButton.setAttribute("aria-label", copy.close);
     title.textContent = activeSection === "filters" ? copy.sheetFilter : activeSection === "spots" ? copy.sheetSpots : copy.plus;
   };

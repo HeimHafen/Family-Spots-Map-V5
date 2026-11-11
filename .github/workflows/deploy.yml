@@ -36,6 +36,8 @@ jobs:
         run: node tools/check-v5-scope.mjs
       - name: Premium-Design und Kalender-/Spotlistenvertrag prüfen
         run: node tools/check-premium-cohesion.mjs
+      - name: Navigation visuell und semantisch absichern
+        run: node tools/check-navigation-contract.mjs
       - name: Alle lokalen Dateiverweise und Fotometadaten prüfen
         run: node tools/check-release-assets.mjs
       - name: Service-Worker-Ausfälle simulieren

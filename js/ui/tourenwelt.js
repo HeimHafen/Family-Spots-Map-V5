@@ -1,3 +1,5 @@
+import { NAV_ORDER, navCopy } from "./navigation-spec.js";
+import { navigationIconHtml } from "./navigation-icons.js";
 // Family Spots Map — Tourenwelt, V4.6.1 test integration.
 // Genuine discovery, geographic filtering, local favourites and planning drafts.
 // Navigation/route computation are NOT implemented or simulated.
@@ -73,13 +75,10 @@ export function initTourenwelt({ getLanguage, closeMenu, openLegacyTour }) {
   }
   const btn=(label,action,cls='',name='')=>`<button type="button" class="${cls}" data-action="${action}">${name?svg(name):''}${label}</button>`;
   const footer=()=>{
-    const t=txt(),names=['map','filters','spots','diary','plus'];
-    const icons=['map','sliders','pin','heartFill','crown'];
-    const source=document.getElementById('fsm-home-nav');
-    return `<nav class="tw-dock" aria-label="${esc(t.navigationLabels.join(' · '))}">${names.map((name,i)=>{
-      const sharedIcon=source?.querySelector(`[data-fsm-home-action="${name}"] svg`)?.outerHTML;
-      return `<button type="button" data-nav="${name}" ${i===0?'aria-current="page"':''}>${sharedIcon||svg(icons[i])}<span>${esc(t.navigationLabels[i])}</span></button>`;
-    }).join('')}</nav>`;
+    const labels=navCopy(lang());
+    return `<nav class="tw-dock" aria-label="${esc(labels.nav)}">${NAV_ORDER.map((name)=>
+      `<button type="button" data-nav="${name}" ${name==='map'?'aria-current="page"':''}>${navigationIconHtml(name)}<span>${esc(labels[name])}</span></button>`
+    ).join('')}</nav>`;
   };
   const shell=()=>{
     const t=txt();
