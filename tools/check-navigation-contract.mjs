@@ -10,6 +10,14 @@ const names=['map','filters','spots','diary','plus'];
 const spec=read('js/ui/navigation-spec.js');
 assert(spec.includes('Object.freeze(["map", "filters", "spots", "diary", "plus"])'),'Navigation order must remain canonical');
 for (const key of names) assert(spec.includes(`${key}:`),'Missing translated navigation destination: '+key);
+const legacyMapDock=read('css/fsm-map-dock-v901.css');
+// Regression: a former V90 visual replacement hid the canonical orange Spots SVG
+// and drew a pseudo-element using the dark text color. The icon must have
+// exactly one source of truth; reintroducing either rule is a release blocker.
+assert(!/\[data-fsm-home-action=["']spots["']\]\s*>\s*svg\s*\{\s*display\s*:\s*none/i.test(legacyMapDock),
+  'Legacy map dock must not hide the canonical Spots SVG');
+assert(!/\[data-fsm-home-action=["']spots["']\]::before/i.test(legacyMapDock),
+  'Legacy map dock must not overlay a pseudo Spots pin');
 const css=read('css/fsm-navigation-system.css');
 assert(css.includes('[data-nav="map"]'),'Map needs an orange contract');
 assert(css.includes('[data-nav="diary"]'),'Diary needs a green icon');

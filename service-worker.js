@@ -1,5 +1,5 @@
   // Family Spots Map: vollständige Offline-Grundfunktion, ohne Kartenkachel-Downloads.
-const CACHE_VERSION = "20261111-nav44-2";
+const CACHE_VERSION = "20261111-navspotfix-1";
 const ROOT = new URL("./", self.location.href);
 const CACHE_PREFIX = "fsm-v5-" + ROOT.pathname.replace(/[^a-z0-9]/gi, "_") + "-";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
@@ -235,21 +235,21 @@ const RELEASE_HASHES = {
   "css/theme.css": "1623d0ad94b1d92ba65f2777356dfab47f75d78004e82bc080cd40450fa59a2d",
   "js/filter-model.js": "1eaee4ef7c57398042071867e1444c18e3c63370174d788f6e5b563123962c2f",
   "css/map-spots.css": "fc811f5faf3a652126a6f8fbc25b8de0501144a43eff5b7e5171cd1f45207923",
-  "da/index.html": "adfbd88bd2d2a27541367616c1ce5ebb3dd52f45386292bcea1158189e097c8a",
+  "da/index.html": "b67b6a63cffd33afea82c349ef4c32b326e075dc48d1402b5398cb2c23663921",
   "data/i18n/da.json": "951da56127bece47feacd0b14f36bce865da645f7125ea49664d4766c1e61e41",
   "data/i18n/de.json": "db4a3703a47a36c9b3e0735da710e20f17e2b8c8fc041a60ba7ad0a7b9ad29ce",
   "data/i18n/en.json": "48e6dc58647ab76a07b38360bbd3d704e3058fbdda9c0cdb60f0e8441ed0a9b6",
   "data/play-ideas.json": "c18f791a6f9bc6490e5414f7ea4ba3e5735ef597d70235e93530f0ee1ba7dc07",
   "data/spots.json": "c6557b4998710233813d58617b15b459a419ae6f1dda9af7f1100608708d206a",
-  "en/index.html": "edbb72b3e4535a1889dd002bb206b2baa505547998d9b7f248555f2e594e83cd",
-  "index.html": "7df98a2ee3e0a78443d3a55d97a7de30101b4fec817beceda01335741ab850cd",
-  "js/app.js": "282182cf3c5b3126647d5412b4f7e7f1f95b2ce46517ae63a7d5fa31db131e82",
+  "en/index.html": "82b0f18885af1871dee3e8b282ba3e8598f3529761f5275ec29c05007e26bb4b",
+  "index.html": "b2c981064dad7e48fc3fb3bba0303623871d4c7ba74483383534a8ebd3a0d3b2",
+  "js/app.js": "70a42d5d43e9370977a7333a197208b7bd95f08ec6555129b7b3e06ee9c78e78",
   "js/config.js": "d5b73ee24a85bc392458fa33a8167c9a1749d467b6f3e8fea804a8d7099fa48a",
   "js/features/personal-backup.js": "e1019180ef2046c93ee0ae7c2a9fcedec9af1375496a811f50bf81afaca61e86",
   "js/features/personal-storage.js": "32876282f17c01fcd46b08b7e8caed4e54aaa5b77052ed725fdc9b5b1b4e1f8b",
   "js/features/tilla.js": "0f6b03a39a5c05f68e24159c09ab4339074d6d1ab388452f13424b873b9496e3",
   "js/i18n.js": "16488d8e1e10270b4b9f40b2a151b52fc0edf1865fe90dee2dfbd40188d2b585",
-  "js/map.js": "9fdd8fe2e649bf8306dee17c0bf036df02437c58229804539f29394e0c8a54dd",
+  "js/map.js": "77251e7f553e278e27bc48267b47d9799065e1bf39d89fa223189feffc7dff42",
   "js/ui/menu.js": "87a9bd34bd2cd9a2e4510629c69932541e911522df89c322544aae0bb46e7311",
   "js/ui/spot-details.js": "98945421bc0a3631ef973a05a30011ecf451740e35424ac73fca2408a1215ecb",
   "offline.html": "e3b8b124835d55406742d8fcf922f5e76d4ee2d6dac9577430fa716b83c08b6f",
@@ -283,7 +283,7 @@ const RELEASE_HASHES = {
   "css/badges.css": "368e7f67b004d7ee8a5f030312260aba6aad2a1e93d8c4235bc0cacca808f15b",
   "js/filters/tags.js": "fbea5599ad6503ccb8a2bb1da9a7d46a3d1bf5ce27afe46c8f1f280ac2ada923",
   "js/filters/logic.js": "775816b277bf8e393bc942f5782e335f038ccbaa5f01514f6e9410db085fc50f",
-  "css/styles.css": "6cd5934f76475b8a2649d170eee6dae69e62b68e5667dd7def77dd506dd5812c",
+  "css/styles.css": "ced5ea07301acf499c75e22c486e1ad1d3420e18f6752c2649a286ab3bd9fc10",
   "js/ui/map-fullscreen.js": "a7ab652087277cbb5bdb53fb2265eedf264605aa93736343e7f28dfffac63161",
   "js/categories.js": "194787250b762a5f26f62b765bd39596f8c9da7d2a72dbdc067a3c195db63dd6",
   "js/ui/category-explorer.js": "bd30833878af0ee06336a5a154d2b0668ddd55ceaf18850b0ba121ce55b82e8d",
@@ -294,7 +294,7 @@ const RELEASE_HASHES = {
   "css/fsm-home-navigation-84.css": "a74aaf3aa8235adeb72e9691861cc73f791733a924225c23a963bc689f43ab87",
   "js/ui/home-navigation.js": "82ef1541a0e64e6db6078cc32303c3fe7a81e95ae064f1175b6f5aeb675514fa",
   "css/main-header-v90.css": "ad40002b9402a8da8423be8352dbb9baf145eb3df9cae8523133b18023f56d8f",
-  "css/fsm-map-dock-v901.css": "6a61a66cc979d5d65e1df7d063d8176f57dfa01d7a40fdd5dbae340ec389509a",
+  "css/fsm-map-dock-v901.css": "515deb7488c673f23e7a59b27a4f4587894b0e00de65b73a2d3997d4d9956013",
   "css/fsm-premium-polish-v902.css": "cd52545ffd22c3d0bf1116a7ce1af2d350a17fa4daf8a9051ae6aec092809f91",
   "css/fsm-header-final-v907.css": "71976a545acfc066d9b1d48297b1655d8890f6159950c4c209eaa88a2d99966a",
   "css/fsm-proportion-target-v917.css": "27be709373439c80440694ddc6becc1cbf15846b0007294ee10e122e38bb9593",
