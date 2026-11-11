@@ -1,5 +1,5 @@
 import { initCycleTours } from "./ui/cycle-tours.js";
-import { initTourenwelt } from "./ui/tourenwelt.js?v=20261111-nav-minimal-1";
+import { initTourenwelt } from "./ui/tourenwelt.js?v=20261111-cohesion-2";
 // js/app.js
 // ======================================================
 // Family Spots Map – Hauptlogik
@@ -25,9 +25,9 @@ document.addEventListener("keydown", event => {
 
 import { evaluateSelection, selectShortcut, shortcutIsSelected, shortcutLabel } from "./filter-model.js";
 import { createMapToolIcon } from "./ui/map-toolbar.js";
-import { createHomeNavigation } from "./ui/home-navigation.js?v=20261111-nav-minimal-1";
+import { createHomeNavigation } from "./ui/home-navigation.js?v=20261111-cohesion-2";
 import { initCommunityPlay } from "./features/community-play.js?v=20261109-details-v43";
-import { initPrivateCalendar } from "./features/gemeinsam-erleben-rc.js?v=20261111-nav-minimal-1";
+import { initPrivateCalendar } from "./features/gemeinsam-erleben-rc.js?v=20261111-cohesion-2";
 import { describeFilters } from "./ui/filter-summary.js";
 import { resultsCopy } from "./ui/filter-results.js";
 import { categoryIcon } from "./ui/category-icons.js";
@@ -94,7 +94,7 @@ import {
   updateMapStatusLanguage,
   renderMarkers,
   hasValidLatLng
-} from "./map.js?v=20261111-nav-minimal-1";
+} from "./map.js?v=20261111-cohesion-2";
 
 import { initRouter } from "./router.js?v=20261109-details-v43";
 import { initToast, showToast } from "./toast.js";
@@ -3512,6 +3512,27 @@ function renderSpotListContent() {
   });
 
   spotListEl.appendChild(frag);
+  // An optional compact overview makes 172 locations scannable without changing
+  // detail, map, favourite or keyboard behavior. Never store UI state with memories.
+  if (orderedSpots.length) {
+    const tools = document.createElement("div");
+    tools.className = "fsm-list-view-tools";
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "fsm-list-view-toggle";
+    const refresh = () => {
+      const compact = spotListEl.classList.contains("fsm-compact-view");
+      toggle.setAttribute("aria-pressed", String(compact));
+      toggle.textContent = locationText("Kompakte Ansicht", "Compact view", "Kompakt visning");
+    };
+    toggle.addEventListener("click", () => {
+      spotListEl.classList.toggle("fsm-compact-view");
+      refresh();
+    });
+    refresh();
+    tools.appendChild(toggle);
+    spotListEl.prepend(tools);
+  }
 }
 
 // ------------------------------------------------------
