@@ -521,11 +521,11 @@ html.fsm-polished #view-diary #daylog-save { min-height:48px!important; backgrou
 html.fsm-polished #fsm-map-fullscreen .fsm-map-nav { display:grid!important; grid-template-columns:repeat(5,minmax(0,1fr))!important; align-items:stretch!important; gap:0!important; padding:5px!important; border-radius:20px!important; background:#fff8ef!important; }
 html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination {
   box-sizing:border-box!important; width:100%!important; min-width:0!important;
-  min-height:58px!important; padding:6px 1px!important; border:0!important;
+  min-height:44px!important; padding:2px 1px!important; border:0!important;
   background:transparent!important; box-shadow:none!important; border-radius:15px!important;
   font-size:11px!important; line-height:1.22!important;
 }
-html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination[aria-current="page"] { background:var(--fsm70-olive)!important; color:#fff!important; }
+html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination[aria-current="page"] { background:transparent!important; color:#3d2918!important; }
 html.fsm-polished #fsm-map-fullscreen .fsm-map-themes { scroll-padding-inline:12px!important; }
 /* Fine focus treatment for all major interactive items. */
 html.fsm-polished :is(button,a,summary,[role="button"],input,textarea,select):focus-visible { outline:2px solid var(--fsm-keyboard-focus, #685c51)!important; outline-offset:2px!important; }
@@ -535,7 +535,7 @@ html.fsm-polished :is(button,a,summary,[role="button"],input,textarea,select):fo
   html.fsm-polished #tilla-sidebar-text { font-size:13px!important; }
   html.fsm-polished :is(#filter-section,.sidebar-section--grow) { padding-inline:12px!important; }
   html.fsm-polished :is(#btn-toggle-filters,#btn-toggle-spots) { font-size:12px!important; max-width:68%!important; }
-  html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination { font-size:10px!important; min-height:56px!important; }
+  html.fsm-polished #fsm-map-fullscreen .fsm-map-nav .fsm-map-tool--destination { font-size:10px!important; min-height:44px!important; }
 }
 @media(prefers-reduced-motion:reduce) {
   html.fsm-polished :is(.spot-card,.sidebar-section,.fsm-map-tool--destination) { transition:none!important; }

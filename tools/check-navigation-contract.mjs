@@ -15,6 +15,11 @@ assert(css.includes('[data-nav="map"]'),'Map needs an orange contract');
 assert(css.includes('[data-nav="diary"]'),'Diary needs a green icon');
 assert(css.includes('[data-nav="plus"]'),'Plus must stay far right');
 assert(css.includes('background: transparent !important'),'No active background tile');
+assert(css.includes('--fsm-nav-height: 44px'),'Navigation height token must be 44 px');
+assert(css.includes('height: 44px !important'),'Navigation/tab targets must have fixed height');
+assert(css.includes('min-height: 44px !important') && css.includes('max-height: 44px !important'),'Navigation height must not fluctuate');
+assert(css.includes('color: var(--fsm-nav-text) !important'),'All navigation labels must use Family Spots Map brown');
+assert(!css.includes('[data-nav="map"] :is(.fsm-nav-icon,.fsm-home-nav__label'),'Map label must never inherit orange icon color');
 for (const file of ['js/ui/home-navigation.js','js/ui/map-toolbar.js','js/ui/tourenwelt.js','js/features/gemeinsam-erleben-rc.js']) {
   const text=read(file);
   assert(text.includes('NAV_ORDER'),file+': must import shared navigation order');

@@ -350,8 +350,8 @@ html.fsm-map-fullscreen-open body { overflow: hidden; overscroll-behavior: none;
   flex: 1 1 0;
   flex-direction: column;
   min-width: 0;
-  min-height: 57px;
-  padding: 7px 1px;
+  min-height: 44px;
+  padding: 2px 1px;
   border: 0;
   border-radius: 17px;
   box-shadow: none;
@@ -429,7 +429,7 @@ html[data-fsm-focus-modality="keyboard"] #fsm-map-fullscreen .fsm-map-tool:focus
   #fsm-map-fullscreen .fsm-map-tool--theme { font-size: 13px; }
 }
 @media (max-height: 450px) {
-  #fsm-map-fullscreen .fsm-map-tool--destination { flex-direction: row; min-height: 44px; }
+  #fsm-map-fullscreen .fsm-map-tool--destination { flex-direction: column; min-height: 44px; }
   #fsm-map-fullscreen .fsm-map-nav { padding: 3px; bottom: calc(var(--fsm-bottom-space) + 22px); }
 }
 @media (hover: hover) {
